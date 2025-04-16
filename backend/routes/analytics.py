@@ -26,7 +26,8 @@ async def get_analytics():
     async for item in items_collection.find():
         items.append(item)
     # damm this is the last lab
-    users = ["A1","B2","C3"]
+    #The dummy users cause error, users has to be an empty list
+    users = []
     async for user in users_collection.find():
         users.append(user)
     
