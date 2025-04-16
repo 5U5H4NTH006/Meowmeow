@@ -1,2 +1,244 @@
-Aah I was too lazy to implement this
-You can do it
+frontend\style.css */
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #4a6fa5;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #3a5a80;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h1 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eee;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Forms */
+form {
+  margin-bottom: 2rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3a5a80;
+}
+
+/* Lists */
+ul {
+  list-style-type: none;
+  margin-bottom: 1.5rem;
+}
+
+li {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  padding: 0.3rem 0.75rem;
+  margin-left: 1rem;
+  background-color: #dc3545;
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+
+/* Search and Count */
+#search, #source {
+  max-width: 300px;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+#itemCount, #userCount, #articleCount, #attemptCount {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #4a6fa5;
+}
+
+/* Quiz Specific */
+.hidden {
+  display: none;
+}
+
+#question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+#feedback {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+#answerForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#answerForm input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* News Feed */
+.news-scrollable, .attempt-scrollable {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.news-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid #4a6fa5;
+}
+
+.news-item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.news-item a {
+  color: #4a6fa5;
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+/* Analytics */
+#stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#stats p {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid #4a6fa5;
+}
+
+#plot {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* Loading Indicator */
+#loading {
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+  color: #6c757d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav a {
+    margin: 0.3rem 0;
+  }
+  
+  #stats {
+    grid-template-columns: 1fr;
+  }
+}
