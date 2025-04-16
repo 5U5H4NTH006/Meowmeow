@@ -1,6 +1,8 @@
 
+const baseURL = "http://localhost:8000";   // baseurl 
+
 async function loadUsers() {
-  const res = await fetch(`/users`);
+  const res = await fetch(`${baseURL}/users`);
   const users = await res.json();
   const list = document.getElementById("userList");
   list.innerHTML = "";
@@ -14,7 +16,7 @@ async function loadUsers() {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.onclick = async () => {
-      await fetch(`${baseURL}/users/${user._id}`, { method: "DELETE" });
+      await fetch(`${baseURL}/users/${user._id}`, { method: "DELETE" });         
       loadUsers();
     };
 
@@ -40,7 +42,7 @@ document.getElementById("search").addEventListener("input", async (e) => {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.onclick = async () => {
-      await fetch(`/users/${user._id}`, { method: "PATCH" });
+      await fetch(`${baseURL}/users/${user._id}`, { method: "DELETE" });     // patch to delete
       loadUsers();
     };
 
@@ -55,7 +57,7 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const username = document.getElementById("username").value;
   const bio = document.getElementById("bio").value;
-  await fetch(`/users`, {
+  await fetch(`${baseURL}/users`, {             // added baseURL
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, bio })
