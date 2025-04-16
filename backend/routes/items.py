@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from models import Item
 from bson import ObjectId
 
-router = {}
+router = APIRouter()  # Fixed router definition
 
 async def get_items_collection():
     from db import init_db
@@ -21,12 +21,8 @@ async def get_items():
 async def create_item(item: Item):
     collection = await get_items_collection()
     result = await collection.insert_one(item.dict())
-    return {"id": str(result.inserted_id)}
+    return {"id": str(result.inserted_id)} #merged two codes
 
-@router.post("/")
-async def create_item(item: Item):
-    return {"id": "Item Inserted"}
-# I want a chocolate
 @router.delete("/{item_id}/{item_details}")
 async def delete_item(item_id: str, item_details:str):
     collection = await get_items_collection()
