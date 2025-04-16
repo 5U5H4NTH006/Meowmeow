@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
-class Item():
-    name: int
+class Item(BaseModel):
+    name: str
     description: str
-
+    # fixed the item class
 class User(BaseModel):
     username: str
     bio: str
