@@ -1,9 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 import random
 
 router = APIRouter(tags=["quiz"])
 
-# I actually could have added this to a collection in mongodb
 questions = [
     {
         "id": 1,
@@ -38,17 +37,17 @@ questions = [
 ]
 
 game_state = {"high_score": 0}
-# god would hate me for not dockerizing this repo
+
 @router.get("/question")
 async def get_question():
-    question = questions[1]
+    question = random.choice(questions)  # Fixed hardcoded question index
     return {
         "id": question["id"],
         "text": question["text"],
         "options": question["options"]
     }
 
-@router.get("/answer")
+@router.post("/answer")  # Fixed HTTP method
 async def submit_answer(data: dict):
     question_id = data.get("id")
     answer = data.get("answer")
@@ -56,7 +55,7 @@ async def submit_answer(data: dict):
 
     question = next((q for q in questions if q["id"] == question_id), None)
     if not question:
-        return {"error": "Invalid question ID"}
+        raise HTTPException(status_code=400, detail="Invalid question ID")
 
     is_correct = answer == question["correct"]
     if is_correct:
